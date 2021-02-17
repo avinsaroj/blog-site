@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block contact %}
+
+<div class="container ">
+ <div class="row  ">
+ <div class="col-md-2">
+ </div>
+ <div class="col-md-9 " style="padding:30px;">
+      <div class="card my-5" style="width: 30rem;">
+  <img class="card-img-top img-circle"style="width: 200px; height:200px;" src="{{request.user.auther.image.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{request.user.first_name}} {{request.user.last_name}}</h5>
+ <p class="card-text">({{request.user.auther.profession}})</p>
+    <p class="card-text">{{request.user.auther.about}}</p>
+    <a href="{% url 'updateprofile' %}" class="btn btn-primary">Update profile</a>
+  </div>
+</div>
+ 
+
+    </div>  
+    <div class="col-md-1">
+ </div>
+ </div>
+     
+</div>
+
+
+
+{% endblock contact %}

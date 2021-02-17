@@ -1,0 +1,40 @@
+{% load static %}
+<div class="preloader">
+     <div class="sk-spinner sk-spinner-wordpress">
+          <span class="sk-inner-circle"></span>
+     </div>
+</div>
+
+<!-- Navigation section  -->
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+               <a href="{% url 'index' %}" class="navbar-brand">Blog For U</a>
+          </div>
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                   
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a href="{% url 'dashboard' %}">Dashbord</a></li>
+                     <li><a href="{% url 'gallery' %}">Profile</a></li>
+
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                     {% endif %}
+               </ul>
+          </div>
+
+  </div>
+</div>

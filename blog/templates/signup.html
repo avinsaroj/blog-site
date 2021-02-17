@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block contact %}
+<section id="home" class="main-contact parallax-section">
+     <div class="overlay"></div>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-12 col-sm-12">
+                    <h1>Log IN</h1>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+<!-- Contact Section -->
+
+<section id="contact">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-offset-1 col-md-10 col-sm-12">
+                   
+<form action="" method="post" novalidate>
+   {% csrf_token %}
+   {% for fm in form %}
+    <div>
+    {{fm.label_tag}} {{fm}} <small>{{fm.errors|striptags}}</small>
+    </div>
+   {% endfor %}
+   <input type="submit" value="Login">
+   {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+     <p>{{error}}</p>
+    {% endfor %}
+   {% endif %}
+  </form>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+{% endblock contact %}

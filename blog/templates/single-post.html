@@ -1,0 +1,102 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block contact %}
+
+
+
+<section id="home" class="main-single-post parallax-section">
+     <div class="overlay"></div>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-12 col-sm-12">
+                    <h1>Single Post</h1>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+<!-- Blog Single Post Section -->
+
+<section id="blog-single-post">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-offset-1 col-md-10 col-sm-12">
+                    <div class="blog-single-post-thumb">
+                         
+
+                         <div class="blog-post-title">
+                              <h2>{{post.title}}</a></h2>
+                         </div>
+
+                         <div class="blog-post-format">
+                              <span><a href="#"><img src="{{post.auther.image.url}}" class="img-responsive img-circle"> {{post.auther.user.username}}</a></span>
+                              <span><i class="fa fa-date"></i>{{post.data}}</span>
+                              <span><a href="#"><i class="fa fa-comment-o"></i> 124 Comments</a></span>
+                         </div>
+
+                         <div class="blog-post-des">
+                              <p>{{post.desc}}</p>
+                              
+                             
+                         </div>
+                         
+                             
+                         </div>
+                         
+                         
+
+                         
+                         
+                         <div class="blog-author">
+                              <div class="media">
+                                   <div class="media-object pull-left">
+                                        <img src="{{post.auther.image.url}}" class="img-circle img-responsive" alt="blog">
+                                   </div>
+                                   <div class="media-body">
+                                        <h3 class="media-heading"><a href="#">{{post.auther.user}} ({{post.auther.profession}})</a></h3>
+                                        <p>{{post.auther.about}}</p>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="blog-comment">
+                              <h3>Comments</h3>
+                              {% for comm in comments %}
+                             
+                                   <div class="blog-post-format">
+                              <span><a href="#"><img src="{{comm.user.auther.image.url}}" class="img-responsive img-circle"> {{comm.user.username}}</a></span>
+                              <span><i class="fa fa-date"></i>{{comm.time}}</span>
+                              <span><a href="#"><i class="fa fa-comment-o"></i></a>{{comm.comment}}</span>
+                         </div>
+                                   {% endfor %}
+                                   
+                         </div>
+
+                         <div class="blog-comment-form">
+                              <h3>Leave a Comment</h3>
+                                   {% if request.user.is_authenticated %}
+                                   <form action="#" method="post">
+                           	 	 	 {% csrf_token %}
+                                        {{com.as_p}}
+                                        <br>
+                                        <div class="col-md-3 col-sm-4">
+                                             <input name="submit" type="submit" class="form-control" id="submit" value="Send">
+                                        </div>
+                                        
+                                   </form>
+                                   {% endif %}
+                         </div>
+                    </div>
+          </div>
+     </div>
+     
+    
+     
+</section>
+
+
+
+{% endblock contact %}
